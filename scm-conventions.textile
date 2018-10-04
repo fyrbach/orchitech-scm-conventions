@@ -1,0 +1,110 @@
+h1. [RULE] SCM konvence
+
+Níže sepsané konvence se vztahují ke Gitu.
+
+h2. Soubory
+
+Součástí Git repozitáře musí být:
+
+* @.gitattributes@
+
+A naopak nesmí obsahovat:
+
+* Systémové soubory (.DS_Store, Thumbs.db…)
+* Soubory IDE (.idea, .project…)
+
+h2. Commit message
+
+Všechny commit messages jsou v *angličtině*.
+
+Správný commit message začíná jedinou krátkou řádkou sumarizující změnu. Zpravidla maximálně 50 znaků dlouhou (50 znaků bez reference na issue). Následuje prázdná řádka a poté podrobnější popis. Nástroje, které takovéto commity převádejí na e-maily, používají první řádku jako předmět a zbytek commitu jako tělo e-mailu.
+
+"První řádka je psána rozkazovacím způsobem. Jako kdyby byly codebase dávány rozkazy, co má udělat":https://git.kernel.org/pub/scm/git/git.git/tree/Documentation/SubmittingPatches?id=HEAD#n135. Sám Git takovou konvenci používá, když předpřipravuje commit message jako "Merge branch…" nebo "Revert…".
+
+V commit message je možné používat Markdown syntaxi. Některé nástroje, jako např. GitLab, s ní umí pracovat. Snažte se nepřesáhnout zhruba 72 znaků na řádek. Váš oblíbený editor či IDE určitě podporuje automatické zalamování textu.
+
+*Dobře:*
+
+<pre>
+Fix typo in /benefit/detail request mapping. See RM #1234
+</pre>
+
+<pre>
+Implement request logging framework. See RM #1234
+
+Following components have been created:
+
+* RequestLogging facade with its default implementation.
+* RequestLoggingFilter.
+* Default LoggingRequestAppender using standard logger as output.
+</pre>
+
+*Špatně*
+
+<pre>
+Fixed bug. See RM #1234
+</pre>
+
+<pre>
+Create new API for invoices. See RM #1234
+It returns only mock response yet.
+</pre>
+
+h2. Obsah commitu
+
+Správný commit obsahuje jedinou, logicky zapouzdřenou změnu. Takový commit se dá lehce reviewovat, opravit, rollbacknout. Pokud jediný commit obsahuje stovky či dokonce tisíce řádků, je to zpravidla špatně (většinou se jedná o vícero změn commitnutých najednou).
+
+h2. Vývojová branch
+
+Feature branches pojmenováváme podle issue a s případným popiskem *rm1234-angular-upgrade*. Název musí být lowercase a používat pomlčky pro oddělení slov.
+
+// TODO: Vytváření branche pro opravy?
+
+h2. Merge do masteru
+
+// TODO: Doplnit info o noff merge.
+
+h2. Začlenění změn do maintenance verzí
+
+// TODO: Doplnit.
+
+h2. Linkování na issue manager
+
+*Nemáte-li issue k nalinkování, buď děláte drobný agilní refactoring (a je to OK), systémové práce (branchování apod., i když zde je též možné linkovat), nebo je něco špatně a kontaktujte buď vedoucího projektu nebo projektového manažera.*
+
+Commity se vždy snažíme svazovat s issue managerem pomocí _identifikátorů issue_. Je potřeba dodržovat hlavní vazby na primární issue management systém. V našem případě je to Redmine, na některých projektech to jsou jiné systémy (CPORT má eTraxis, IAM má Trac).
+
+Pro náš Redmine jsou odkazy ve stylu @See RM #1000@.
+
+Linkování na issue by mělo být vždy na prvním řádku commitu.
+
+<pre>
+Fix NPE in database connection pool. See RM #1234.
+</pre>
+
+Pro referencování více issues je možné zdat více čísel oddělených mezerou nebo čárkou.
+
+<pre>
+Fix NPE in database connection pool. See RM #1234 #5678.
+</pre>
+
+Pokud se odkazujeme na issue manager, který není s SCM svázaný, je důležité se odkázat způsobem, který nebude interpretován. Nejčastěji se před identifikátor přidává zkratka systému.
+
+Supporty pro IGO nejsou definovány v Redmine, takže se nenavazuje pomocí reference a commit message by měla vypadat tímto způsobem.
+
+<pre> 
+Fix NPE in database connection pool. See CP #1234. NOREF.
+</pre>
+
+h2. Ostatní
+
+h3. Tipy
+
+// TODO: Doplnit tipy pro IntelliJ IDEA.
+// TODO: Doplnit tipy pro Eclipse.
+// TODO: Doplnit tipy pro Vim.
+
+h3. Doporučená literatura
+
+* "Pro Git":https://git-scm.com/book/en/v2 (je k dispozici i v "české verzi":https://git-scm.com/book/cs/v2)
+* @man gitworkflows@
