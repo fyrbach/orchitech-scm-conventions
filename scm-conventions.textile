@@ -54,9 +54,9 @@ h2. Obsah commitu
 
 Správný commit obsahuje jedinou, logicky zapouzdřenou změnu. Takový commit se dá lehce reviewovat, opravit, rollbacknout. Pokud jediný commit obsahuje stovky či dokonce tisíce řádků, je to zpravidla špatně (většinou se jedná o vícero změn commitnutých najednou).
 
-h2. Vývojová branch
+h2. Feature branches
 
-Feature branches pojmenováváme podle issue a s případným popiskem *rm1234-angular-upgrade*. Název musí být lowercase a používat pomlčky pro oddělení slov.
+Feature branches pojmenováváme podle issue a přidáváme krátký popis *@rm1234-angular-upgrade@*. Název musí být lowercase a používat pomlčky pro oddělení slov.
 
 // TODO: Vytváření branche pro opravy?
 
@@ -92,7 +92,7 @@ Pokud se odkazujeme na issue manager, který není s SCM svázaný, je důležit
 
 Supporty pro IGO nejsou definovány v Redmine, takže se nenavazuje pomocí reference a commit message by měla vypadat tímto způsobem.
 
-<pre> 
+<pre>
 Fix NPE in database connection pool. See CP #1234. NOREF.
 </pre>
 
